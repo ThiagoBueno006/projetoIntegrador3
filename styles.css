@@ -1,0 +1,20 @@
+body{
+    background-image: url(design/Background_Interface\ final.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sec1 {
+}
+
+.sec2 {
+}
+
+.sec3 {
+}
