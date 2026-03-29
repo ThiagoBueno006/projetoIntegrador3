@@ -1,20 +1,93 @@
+:root {
+  /* Base transparente (glass effect) */
+  --glass-white: rgba(255, 255, 255, 0.493);
+  --glass-white-strong: rgba(255, 255, 255, 0.651);
+  --glass-white-light: rgba(255, 255, 255, 0.4);
+
+  /* === gradiente glass === */
+  --gradient-glass-soft: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(111, 160, 214, 0.25),
+    rgba(111, 161, 214, 0.089)
+  );
+
+  /* Azul do fundo com transparência */
+  --glass-blue: rgba(111, 160, 214, 0.35);
+  --glass-blue-strong: rgba(111, 160, 214, 0.55);
+
+  /* Glow quente com transparência */
+  --glass-gold: rgba(242, 214, 162, 0.35);
+
+  /* Bordas suaves */
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  /* Sombra leve */
+  --shadow-color: rgba(34, 64, 97, 0.12);
+
+  /* ===== TEXTOS ===== */
+  --text-primary: #30577e;        /* título forte */
+  --text-secondary: #6b7c93;      /* texto padrão */
+  --orange: #f5a623;
+
+  /* ===== FONTE ===== */
+  --font-primary: 'Inter', sans-serif
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body{
     background-image: url(design/Background_Interface\ final.png);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.wrapper {
+    width: 85%;
+    margin: 40px auto;
+}
+
+.nome {
+    font-size: 36px;
+    background-color: var(--glass-white);
+    width: 100%;
+    padding: 3vh;
+    border-radius: 20px 20px 0px 0px;
+    font-family: var(--font-primary);
+    font-weight: 900;
+    color:  var(--text-primary);
+    box-shadow: 0px 10px 15px var(--shadow-color);
+}
+
+.nome__laranja {
+    color: var(--orange);
+    font-weight: 400;
 }
 
 .container {
     display: flex;
-    align-items: center;
     gap: 20px;
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    height: 80vh;
+    background: var(--gradient-glass-soft);
+    justify-content: space-between;
+    padding-top: 2%;
+    border-radius: 0 0 10px 10px;
 }
 
-.sec1 {
-}
-
-.sec2 {
-}
-
-.sec3 {
+.sec1, .sec2, .sec3 {
+    background-color: var(--glass-white-strong);
+    flex: 1;
+    min-height: 400px;
+    padding: 1%;
+    border-radius: 5px;
+    font-family: var(--font-primary);
+    font-weight: 100;
 }
