@@ -16,11 +16,18 @@
                 <h2 class="consulta__titulo">Consulta de Produto</h2>
                 <div class="consulta__pesquisa">
                     <h3 class="consulta__pesquisa__titulo">Selecionar o produto:</h3>
-                    <div class="consulta__pesquisa__barra">
-                        <form class="search-box">
-                            <input class="search-box__input" type="text" placeholder="Pesquisar..." />
-                            <button class="search-box__button" type="submit">Consultar</button>
-                        </form>
+                    <!-- 
+                            implementação de autocomplete
+                            Não sei se vai funcionar mas vamos testar
+                    -->
+                    <div class="autocomplete">
+                        <input 
+                            type="text" 
+                            id="inputProduto" 
+                            placeholder="Pesquisar produto..." 
+                            autocomplete="off"
+                        />
+                        <div id="listaSugestoes" class="sugestoes"></div>
                     </div>
                 </div>    
                 <div class="consulta__resultado">
