@@ -13,26 +13,27 @@
         <h1 class="nome">Vital <span class="nome__laranja">Lâmpadas</span></h1>
         <div class="container">
             <section class="sec1 consulta">
-                <h2 class="consulta__tituto">Consulta de Produto</h2>
+                <h2 class="consulta__titulo">Consulta de Produto</h2>
                 <div class="consulta__pesquisa">
-                    <h3 class="consulta__pesquisa__titulo">Selecionar o produto</h3>
+                    <h3 class="consulta__pesquisa__titulo">Selecionar o produto:</h3>
                     <div class="consulta__pesquisa__barra">
                         <form class="search-box">
-                            <input type="text" placeholder="Pesquisar..." />
-                            <button type="submit">🔍</button>
+                            <input class="search-box__input" type="text" placeholder="Pesquisar..." />
+                            <button class="search-box__button" type="submit">Consultar</button>
                         </form>
                     </div>
                 </div>    
                 <div class="consulta__resultado">
-                    <h2 class="consulta__resultado__titulo">Informações do Produto</h2>
+                    <h2 class="consulta__resultado__titulo">Informações do Produto:</h2>
                     <div class="consulta__resultado__descricao">
+                        <!-- Aqui vão entrar os dados do banco -->
                         <p>Tipo: LED bulbo</p>
                         <p>Potencia: 12w</p>
                         <p>Temperatura: 6500k</p>
                         <p>Fornecedor: LuxMax</p>
                         <p>Estoque Atual: 35 unidades</p>
                         <p>Estoque Minimo: 10 unidades</p>
-                        <p>Status: estoque normal</p>
+                        <p class="consulta__resultado__descricao-variante">Status: estoque normal</p>
                     </div>
                 </div>
             </section>
@@ -40,6 +41,7 @@
             <section class="sec2 movimento">
                 <h2 class="movimento__titulo">Movimentação de Estoque</h2>
                 <div class="movimento__estoque">
+                    <!-- Aqui vão entrar os dados do banco -->
                     <p>Produto: LED bulbo</p>
                     <p>Quantidade: 20</p>
                     <button> <p>Registrar Entrada</p> </button>
@@ -52,12 +54,14 @@
                 <div class="analise__grafico1">
                     <h2 class="analise__grafico1__titulo">Estoque Atual</h2>
                     <div class="analise__grafico1__dados">
+                        <!-- Aqui vão entrar os dados do banco -->
                         grafico entra aqui depois
                     </div>
                 </div>
                 <div class="analise__grafico2">
                     <h2 class="analise__grafico2__titulo">Movimentação Mensal</h2>
                     <div class="analise__grafico2__dados">
+                        <!-- Aqui vão entrar os dados do banco -->
                         grafico entra aqui depois
                     </div>
                 </div>

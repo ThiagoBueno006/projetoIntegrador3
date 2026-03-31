@@ -27,8 +27,12 @@
 
   /* ===== TEXTOS ===== */
   --text-primary: #30577e;        /* título forte */
+  --text-primary-neg: #fff;       /* titulo parte escura */
   --text-secondary: #6b7c93;      /* texto padrão */
   --orange: #f5a623;
+  --green: #459c45;
+  --yellow: #969c45;
+  --red: #9c4545;
 
   /* ===== FONTE ===== */
   --font-primary: 'Inter', sans-serif
@@ -91,4 +95,85 @@ body{
     font-family: var(--font-primary);
     font-weight: 100;
     box-shadow: 2px 2px 15px var(--shadow-color);
+}
+
+.consulta__titulo,  
+.movimento__titulo,
+.analise__titulo {
+    color: var(--text-primary);
+    font-weight: 400;
+    font-size: 20px;
+    margin: 2%;
+    border-bottom: 0.2px solid #30577e0a;
+    padding-bottom: 5px;
+}
+
+.search-box {
+    margin: 2vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* INPUT */
+.search-box__input {
+    width: 250px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #cfcfcf;
+    background: #e9edf3;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-box__input:focus {
+    border-color: #6c8ebf;
+    box-shadow: 0 0 4px rgba(108, 142, 191, 0.5);
+}
+
+/* BOTÃO */
+.search-box__button {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, #6c8ebf, #4a6fa5);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.search-box__button:hover {
+    opacity: 0.9;
+}
+
+.consulta__resultado {
+    background-color: var(--glass-white);
+    padding: 2vh;
+    border-radius: 10px;
+    height: 60%;
+    color: var(--text-primary);
+}
+
+.consulta__resultado__titulo {
+    margin-bottom: 2vh;
+    border-bottom: 0.2px solid #30577e0a;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
+.consulta__resultado__descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.consulta__resultado__descricao-variante {
+    background-color: var(--green);
+    color: var(--text-primary-neg);
+    padding: 1.2vh;
+    border-radius: 2px;
 }
