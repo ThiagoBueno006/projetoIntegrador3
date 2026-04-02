@@ -174,6 +174,40 @@ nav {
    background-color: bisque;
 }
 
+.autocomplete {
+  position: relative;
+  width: 300px;
+  margin: 2vh;
+}
+
+#inputProduto {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #e9edf3;
+  outline: none;
+}
+
+.sugestoes {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+}
+
+.sugestao-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
 .consulta_resultado_titulo {
     color: var(--text-primary);
     font-size: 24px;
