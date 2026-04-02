@@ -36,10 +36,11 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body{
-    background-image: url(design/Background_Interface\ final.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -47,30 +48,71 @@ body{
     min-height: 100vh;
 }
 
-.wrapper {
+/* .wrapper {
     width: 85%;
     margin: 40px auto;
+} */
+
+header {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 2px 2px 15px var(--shadow-color);
+}
+
+.logo {
+    float: left;
 }
 
 .nome {
     font-size: 46px;
-    background-color: var(--glass-white);
     width: 100%;
-    padding: 3vh;
     border-radius: 20px 20px 0px 0px;
     font-family: var(--font-primary);
     font-weight: 900;
     color:  var(--text-primary);
-    box-shadow: 0px 10px 10px var(--shadow-color);
 }
 
-.nome__laranja {
+.nome_laranja {
     color: var(--orange);
     font-weight: 400;
 }
 
+nav {
+    float: right;
+}
+
+.nav_links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+.nav_links li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav_links li a {
+    color: #30577e;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.nav_links li a:hover {
+    background-color: var(--gradient-glass-soft);
+    box-shadow: 2px 2px 15px var(--shadow-color);
+}
+
 .container {
     display: flex;
+    flex-direction: column;
     gap: 20px;
     padding: 20px;
     margin: auto;
@@ -86,9 +128,52 @@ body{
     background-color: var(--glass-white-strong);
     flex: 1;
     min-height: 400px;
-    padding: 1%;
+    padding: 2%;
     border-radius: 5px;
     font-family: var(--font-primary);
     font-weight: 100;
     box-shadow: 2px 2px 15px var(--shadow-color);
+}
+
+.pesquisa {
+    margin-bottom: 40px;
+}
+
+.consulta_titulo {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.caixa_pesquisa {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 2px 2px 15px var(--shadow-color);
+    padding: 10px;
+}
+
+.botao_pesquisa {
+    background-color: var(--glass-white);
+    border: none;
+    box-shadow: 2px 2px 15px var(--shadow-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.botao_pesquisa:hover {
+   cursor: pointer;
+   background-color: bisque;
+}
+
+.consulta_resultado_titulo {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
 }
