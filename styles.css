@@ -208,6 +208,10 @@ nav {
   cursor: pointer;
 }
 
+.sugestao-item:hover {
+  background: #f0f0f0;
+}
+
 .consulta_resultado_titulo {
     color: var(--text-primary);
     font-size: 24px;
