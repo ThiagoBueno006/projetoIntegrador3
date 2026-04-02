@@ -16,33 +16,31 @@
         <nav>
             <ul class="nav_links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="moviment.html">Movimentação</a></li>
                 <li><a href="analysis.html">Análises</a></li>
             </ul>
         </nav>
     </header>
     <main class="container">
         <section class="sec1 consulta">
-<!-- 
-            <div class="autocomplete">
-                <input 
-                    type="text" 
-                    id="inputProduto" 
-                    placeholder="Pesquisar produto..." 
-                    autocomplete="off"
-                />
-                    <div id="listaSugestoes" class="sugestoes"></div>
-            </div> -->
             <div class="pesquisa">
                 <h2 class="consulta_titulo">Consulta de Produto</h2>
                 <div class="consulta_pesquisa">
                     <div class="consulta_pesquisa_barra">
                         <form>
-                            <input class="caixa_pesquisa" type="text" placeholder="Pesquisar..." />
+                            <input class="caixa_pesquisa" type="text" placeholder="Pesquisar produto..." />
                             <button class="botao_pesquisa" type="submit">🔍</button>
                         </form>
                     </div>
                 </div> 
+                <!-- <div class="autocomplete">
+                    <input 
+                    type="text" 
+                    id="inputProduto" 
+                    placeholder="Pesquisar produto..." 
+                    autocomplete="off"
+                    />
+                    <div id="listaSugestoes" class="sugestoes"></div>
+                </div> -->
             </div>
 
             <div class="consulta_resultado">
@@ -56,6 +54,16 @@
                     <p>Estoque Minimo: 10 unidades</p>
                     <p>Status: estoque normal</p>
                 </div>
+            </div>
+        </section>
+    
+        <section class="sec2 movimento">
+            <h2 class="movimento__titulo">Movimentação de Estoque</h2>
+            <div class="movimento__estoque">
+                <p>Produto: LED bulbo</p>
+                <p>Quantidade: 20</p>
+                <button> <p>Registrar Entrada</p> </button>
+                <button> <p>Registrar Saída</p> </button>
             </div>
         </section>
     </main>

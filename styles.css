@@ -116,7 +116,7 @@ nav {
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
     padding: 20px;
     margin: auto;
@@ -132,6 +132,7 @@ nav {
     background-color: var(--glass-white-strong);
     flex: 1;
     min-height: 400px;
+    min-width: 340px;
     padding: 2%;
     border-radius: 5px;
     font-family: var(--font-primary);
@@ -155,6 +156,7 @@ nav {
     border: none;
     border-radius: 20px;
     box-shadow: 2px 2px 15px var(--shadow-color);
+    min-width: 300px;
     padding: 10px;
 }
 
@@ -210,6 +212,18 @@ nav {
 
 .sugestao-item:hover {
   background: #f0f0f0;
+}
+
+.consulta_resultado {
+    background-color: var(--glass-white-strong);
+    flex: 1;
+    max-width: 100%;
+    min-height: 200px;
+    padding: 2%;
+    border-radius: 15px;
+    font-family: var(--font-primary);
+    font-weight: 100;
+    box-shadow: 2px 2px 15px var(--shadow-color);
 }
 
 .consulta_resultado_titulo {
