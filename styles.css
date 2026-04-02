@@ -27,8 +27,12 @@
 
   /* ===== TEXTOS ===== */
   --text-primary: #30577e;        /* título forte */
+  --text-primary-neg: #fff;       /* titulo parte escura */
   --text-secondary: #6b7c93;      /* texto padrão */
   --orange: #f5a623;
+  --green: #459c45;
+  --yellow: #969c45;
+  --red: #9c4545;
 
   /* ===== FONTE ===== */
   --font-primary: 'Inter', sans-serif
