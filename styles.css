@@ -233,3 +233,11 @@ nav {
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+.movimento__titulo {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
