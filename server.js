@@ -5,16 +5,10 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const dbConfig = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT || 5432,
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-};
-
-const pool = new Pool(dbConfig);
+});
 
 // Testa conexão com banco (opcional, não bloqueia o servidor)
 pool.connect()

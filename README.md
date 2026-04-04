@@ -17,12 +17,8 @@ Este projeto agora conta com um backend Node.js que integra o frontend `index.ht
 
 ### Banco de dados PostgreSQL (Neon)
 1. Crie o banco de dados usando o arquivo SQL em `database/schema_controle_estoque_postgresql_neon.sql`.
-2. Configure as variáveis de ambiente:
-   - `DB_HOST` (host do Neon)
-   - `DB_USER` (usuário do Neon)
-   - `DB_PASSWORD` (senha do Neon)
-   - `DB_NAME` (nome do banco)
-   - `DB_PORT` (porta, geralmente 5432)
+2. Configure a variável de ambiente:
+   - `DATABASE_URL` (string de conexão completa fornecida pelo Neon)
 
 ### Execução
 ```bash
