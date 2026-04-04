@@ -19,6 +19,12 @@
                 <li><a href="analysis.html">Análises</a></li>
             </ul>
         </nav>
+        <div class="acessibilidade" aria-label="Ajustes de acessibilidade">
+            <span class="acessibilidade_label">Texto:</span>
+            <button id="decreaseText" type="button" aria-label="Diminuir tamanho do texto">A-</button>
+            <button id="increaseText" type="button" aria-label="Aumentar tamanho do texto">A+</button>
+            <button id="toggleContrast" type="button" aria-label="Alternar contraste alto">C</button>
+        </div>
     </header>
     <main class="container">
         <section class="sec1 consulta">
@@ -67,5 +73,6 @@
         </section>
     </main>
     <script src="app.js"></script>
+    <script src="a11y.js"></script>
 </body>
 </html>

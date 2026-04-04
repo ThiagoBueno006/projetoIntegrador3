@@ -13,3 +13,11 @@ Este projeto agora conta com um backend Node.js que integra o frontend `index.ht
 
 ### Endereço da aplicação Controle de Estoque da empresa Vital Lampadas
 https://controle-de-estoque-kxxj.onrender.com/
+
+# Acessibilidade na Página
+Este projeto foi desenvolvido com foco em acessibilidade, garantindo que diferentes usuários possam navegar e interagir com o conteúdo de forma inclusiva. 
+## Recursos de Acessibilidade Implementados
+- **Aumento de fontes**: O usuário pode ajustar o tamanho da fonte de acordo com sua necessidade, facilitando a leitura para pessoas com baixa visão ou preferências pessoais.
+- **Mudança de contraste**: Foi adicionada a opção de alternar entre diferentes esquemas de contraste, melhorando a visibilidade do conteúdo para usuários com dificuldades visuais ou em ambientes com iluminação desfavorável.
+## Importância
+Essas funcionalidades tornam a página mais acessível e inclusiva, seguindo boas práticas de desenvolvimento web e contribuindo para uma melhor experiência de navegação para todos os usuários.

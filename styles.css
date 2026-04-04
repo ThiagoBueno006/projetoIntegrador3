@@ -61,11 +61,73 @@ header {
     justify-content: space-between;
     align-items: center;
     display: flex;
+    gap: 20px;
     margin: 0;
     margin-bottom: 20px;
     padding: 20px;
     overflow: hidden;
+    position: relative;
     box-shadow: 2px 2px 15px var(--shadow-color);
+}
+.acessibilidade {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 8px 10px;
+    border-radius: 999px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.08);
+}
+.acessibilidade_label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.acessibilidade button {
+    background: var(--glass-white);
+    border: 1px solid rgba(48, 87, 126, 0.2);
+    color: var(--text-primary);
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.acessibilidade button:hover,
+.acessibilidade button:focus {
+    background: var(--gradient-glass-soft);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.high-contrast, .high-contrast body {
+    background: #111 !important;
+    color: #f7f7f7 !important;
+}
+.high-contrast header,
+.high-contrast .sec1,
+.high-contrast .sec2,
+.high-contrast .sec3,
+.high-contrast .consulta_resultado,
+.high-contrast .movimento__estoque,
+.high-contrast .analise__grafico1__dados,
+.high-contrast .analise__grafico2__dados {
+    background: #111 !important;
+    color: #f7f7f7 !important;
+    border-color: #ffffff33 !important;
+}
+.high-contrast .nav_links li a {
+    color: #f7f7f7 !important;
+}
+.high-contrast .acessibilidade {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+.high-contrast .acessibilidade button {
+    background: #f7f7f7 !important;
+    color: #111 !important;
+    border-color: #f7f7f7 !important;
 }
 
 .logo {
