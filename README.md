@@ -10,3 +10,6 @@ Este projeto agora conta com um backend Node.js que integra o frontend `index.ht
 - Exibição de informações do produto direto da tabela `lampadas`.
 - Registro de movimentação de entrada e saída com atualização do estoque.
 - Criação automática de `nota_compra` ou `nota_venda` e dos itens associados.
+
+### Endereço da aplicação Controle de Esqtoque da empresa Vital Lampadas
+https://controle-de-estoque-kxxj.onrender.com/
