@@ -2,7 +2,7 @@
 Projeto desenvolvido por alunos da UNIVESP.
 
 ## Backend e Integração com Banco de Dados
-Este projeto agora conta com um backend Node.js que integra o frontend `index.html` com o banco MySQL usando a estrutura de dados do arquivo `database/schema_controle_estoque_mysql workbench.sql`.
+Este projeto agora conta com um backend Node.js que integra o frontend `index.html` com o banco PostgreSQL (Neon) usando a estrutura de dados do arquivo `database/schema_controle_estoque_postgresql_neon.sql`.
 
 ### Instalação
 1. Instale o Node.js.
@@ -15,13 +15,14 @@ Este projeto agora conta com um backend Node.js que integra o frontend `index.ht
    npm install
    ```
 
-### Banco de dados MySQL
-1. Crie o banco de dados usando o arquivo SQL em `database/schema_controle_estoque_mysql workbench.sql`.
-2. Ajuste as variáveis de ambiente se necessário:
-   - `DB_HOST` (padrão `localhost`)
-   - `DB_USER` (padrão `root`)
-   - `DB_PASSWORD` (padrão vazio)
-   - `DB_NAME` (padrão `controle_estoque`)
+### Banco de dados PostgreSQL (Neon)
+1. Crie o banco de dados usando o arquivo SQL em `database/schema_controle_estoque_postgresql_neon.sql`.
+2. Configure as variáveis de ambiente:
+   - `DB_HOST` (host do Neon)
+   - `DB_USER` (usuário do Neon)
+   - `DB_PASSWORD` (senha do Neon)
+   - `DB_NAME` (nome do banco)
+   - `DB_PORT` (porta, geralmente 5432)
 
 ### Execução
 ```bash
