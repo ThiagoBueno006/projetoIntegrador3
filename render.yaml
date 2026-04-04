@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: controle-de-estoque
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    rootDir: .
