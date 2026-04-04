@@ -26,8 +26,8 @@
                 <h2 class="consulta_titulo">Consulta de Produto</h2>
                 <div class="consulta_pesquisa">
                     <div class="consulta_pesquisa_barra">
-                        <form>
-                            <input class="caixa_pesquisa" type="text" placeholder="Pesquisar produto..." />
+                        <form id="formPesquisa">
+                            <input id="produtoPesquisa" class="caixa_pesquisa" type="text" placeholder="Pesquisar produto..." />
                             <button class="botao_pesquisa" type="submit">🔍</button>
                         </form>
                     </div>
@@ -46,13 +46,7 @@
             <div class="consulta_resultado">
                 <h2 class="consulta_resultado_titulo">Informações do Produto</h2>
                 <div class="consulta_resultado_descricao">
-                    <p>Tipo: LED bulbo</p>
-                    <p>Potencia: 12w</p>
-                    <p>Temperatura: 6500k</p>
-                    <p>Fornecedor: LuxMax</p>
-                    <p>Estoque Atual: 35 unidades</p>
-                    <p>Estoque Minimo: 10 unidades</p>
-                    <p>Status: estoque normal</p>
+                    <p>Pesquise um produto para ver os detalhes.</p>
                 </div>
             </div>
         </section>
@@ -60,12 +54,18 @@
         <section class="sec2 movimento">
             <h2 class="movimento__titulo">Movimentação de Estoque</h2>
             <div class="movimento__estoque">
-                <p>Produto: LED bulbo</p>
-                <p>Quantidade: 20</p>
-                <button> <p>Registrar Entrada</p> </button>
-                <button> <p>Registrar Saída</p> </button>
+                <div class="movimento__controle">
+                    <label for="movimentoQuantidade">Quantidade</label>
+                    <input id="movimentoQuantidade" type="number" min="1" value="1" />
+                </div>
+                <div class="movimento__botoes">
+                    <button id="buttonEntrada" type="button"><p>Registrar Entrada</p></button>
+                    <button id="buttonSaida" type="button"><p>Registrar Saída</p></button>
+                </div>
+                <div id="mensagemMovimentacao" class="movimentacao_mensagem"></div>
             </div>
         </section>
     </main>
+    <script src="app.js"></script>
 </body>
 </html>
