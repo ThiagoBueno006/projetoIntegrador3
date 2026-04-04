@@ -10,13 +10,14 @@ let produtoAtual = null;
 function criarDescricao(produto) {
   const status = produto.estoque_atual <= produto.estoque_minimo ? 'estoque baixo' : 'estoque normal';
   return `
-    <p>Tipo: ${produto.tipo_lampada}</p>
-    <p>Potência: ${produto.potencia}w</p>
-    <p>Temperatura: ${produto.temperatura_cor}</p>
-    <p>Fornecedor: ${produto.fornecedor}</p>
-    <p>Estoque Atual: ${produto.estoque_atual} unidades</p>
-    <p>Estoque Mínimo: ${produto.estoque_minimo} unidades</p>
-    <p>Status: ${status}</p>
+    <p><strong>ID:</strong> ${produto.id_lampada}</p>
+    <p><strong>Tipo:</strong> ${produto.tipo_lampada}</p>
+    <p><strong>Potência:</strong> ${produto.potencia}w</p>
+    <p><strong>Temperatura:</strong> ${produto.temperatura_cor}</p>
+    <p><strong>Fornecedor:</strong> ${produto.fornecedor}</p>
+    <p><strong>Estoque Atual:</strong> ${produto.estoque_atual} unidades</p>
+    <p><strong>Estoque Mínimo:</strong> ${produto.estoque_minimo} unidades</p>
+    <p><strong>Status:</strong> ${status}</p>
   `;
 }
 
