@@ -13,19 +13,32 @@ const pool = new Pool({
 // Testa conexão com banco (opcional, não bloqueia o servidor)
 pool.connect()
   .then(client => {
-    console.log('Conectado ao banco de dados PostgreSQL');
+    console.log('✅ Conectado ao banco de dados PostgreSQL');
     client.release();
   })
   .catch(err => {
-    console.error('Erro ao conectar ao banco de dados:', err.message);
-    console.log('Servidor continuará rodando sem banco de dados');
+    console.error('❌ Erro ao conectar ao banco de dados:', err.message);
+    console.log('ℹ️ Servidor continuará rodando sem banco de dados');
   });
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  console.log('📄 Rota / chamada, servindo index.html');
+  const filePath = path.join(__dirname, 'index.html');
+  console.log('📂 Caminho do arquivo:', filePath);
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error('❌ Erro ao servir index.html:', err);
+      res.status(500).send('Erro interno do servidor');
+    }
+  });
+});
+
+app.get('/health', (req, res) => {
+  console.log('🏥 Health check chamado');
+  res.json({ status: 'OK', message: 'Servidor funcionando', timestamp: new Date().toISOString() });
 });
 
 app.get('/api/lampadas', async (req, res) => {
@@ -134,5 +147,15 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor iniciado em http://localhost:${port}`);
+  console.log(`🚀 Servidor iniciado na porta ${port}`);
+  console.log(`🌐 URL: http://localhost:${port}`);
+});
+
+// Tratamento de erros não capturados
+process.on('uncaughtException', (err) => {
+  console.error('❌ Erro não capturado:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Promessa rejeitada não tratada:', reason);
 });
