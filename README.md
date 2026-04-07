@@ -11,6 +11,14 @@ Este projeto agora conta com um backend Node.js que integra o frontend `index.ht
 - Registro de movimentação de entrada e saída com atualização do estoque.
 - Criação automática de `nota_compra` ou `nota_venda` e dos itens associados.
 
+### Configuração do banco NEON
+1. Copie o arquivo `.env.example` para `.env`.
+2. Preencha `DATABASE_URL` com a string de conexão do Neon.
+3. Execute `npm install` e depois `npm start`.
+4. Abra `http://localhost:3000/health` e confirme se o campo `database` aparece como `connected`.
+
+> Observação: o projeto agora usa SSL por padrão para compatibilidade com o Neon. Só defina `DATABASE_SSL=false` se estiver usando um banco local sem SSL.
+
 ### Endereço da aplicação Controle de Estoque da empresa Vital Lampadas
 https://controle-de-estoque-kxxj.onrender.com/
 

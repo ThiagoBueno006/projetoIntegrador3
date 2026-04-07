@@ -4,11 +4,15 @@
 -- Compatível com PostgreSQL / Neon DB
 -- =====================================================
 
+DROP TABLE IF EXISTS item_nota_venda;
+DROP TABLE IF EXISTS item_nota_compra;
+DROP TABLE IF EXISTS nota_venda;
+DROP TABLE IF EXISTS nota_compra;
+DROP TABLE IF EXISTS lampadas;
 
--- =====================================================
+-- ===============================
 -- TABELA: lampadas
--- Armazena os tipos de lâmpadas disponíveis no estoque
--- =====================================================
+-- ===============================
 
 CREATE TABLE lampadas (
     id_lampada SERIAL PRIMARY KEY,
@@ -18,19 +22,13 @@ CREATE TABLE lampadas (
     fornecedor VARCHAR(100) NOT NULL,
     estoque_atual INT NOT NULL DEFAULT 0,
     estoque_minimo INT NOT NULL DEFAULT 0,
-
-    CONSTRAINT chk_estoque_atual
-        CHECK (estoque_atual >= 0),
-
-    CONSTRAINT chk_estoque_minimo
-        CHECK (estoque_minimo >= 0)
+    CHECK (estoque_atual >= 0),
+    CHECK (estoque_minimo >= 0)
 );
 
-
--- =====================================================
+-- ===============================
 -- TABELA: nota_compra
--- Registra as notas fiscais de compra de mercadorias
--- =====================================================
+-- ===============================
 
 CREATE TABLE nota_compra (
     id_nota_compra SERIAL PRIMARY KEY,
@@ -38,11 +36,9 @@ CREATE TABLE nota_compra (
     data_emissao DATE NOT NULL
 );
 
-
--- =====================================================
+-- ===============================
 -- TABELA: nota_venda
--- Registra as notas fiscais de venda
--- =====================================================
+-- ===============================
 
 CREATE TABLE nota_venda (
     id_nota_venda SERIAL PRIMARY KEY,
@@ -50,50 +46,24 @@ CREATE TABLE nota_venda (
     data_emissao DATE NOT NULL
 );
 
-
--- =====================================================
--- TABELA: item_nota_compra
--- Registra os itens comprados em cada nota de compra
--- =====================================================
+-- ===============================
+-- ITEM COMPRA
+-- ===============================
 
 CREATE TABLE item_nota_compra (
     id_item_compra SERIAL PRIMARY KEY,
-    id_nota_compra INT NOT NULL,
-    id_lampada INT NOT NULL,
-    quantidade INT NOT NULL,
-
-    CONSTRAINT fk_item_compra_nota
-        FOREIGN KEY (id_nota_compra)
-        REFERENCES nota_compra(id_nota_compra),
-
-    CONSTRAINT fk_item_compra_lampada
-        FOREIGN KEY (id_lampada)
-        REFERENCES lampadas(id_lampada),
-
-    CONSTRAINT chk_quantidade_compra
-        CHECK (quantidade > 0)
+    id_nota_compra INT REFERENCES nota_compra(id_nota_compra),
+    id_lampada INT REFERENCES lampadas(id_lampada),
+    quantidade INT NOT NULL CHECK (quantidade > 0)
 );
 
-
--- =====================================================
--- TABELA: item_nota_venda
--- Registra os itens vendidos em cada nota de venda
--- =====================================================
+-- ===============================
+-- ITEM VENDA
+-- ===============================
 
 CREATE TABLE item_nota_venda (
     id_item_venda SERIAL PRIMARY KEY,
-    id_nota_venda INT NOT NULL,
-    id_lampada INT NOT NULL,
-    quantidade INT NOT NULL,
-
-    CONSTRAINT fk_item_venda_nota
-        FOREIGN KEY (id_nota_venda)
-        REFERENCES nota_venda(id_nota_venda),
-
-    CONSTRAINT fk_item_venda_lampada
-        FOREIGN KEY (id_lampada)
-        REFERENCES lampadas(id_lampada),
-
-    CONSTRAINT chk_quantidade_venda
-        CHECK (quantidade > 0)
+    id_nota_venda INT REFERENCES nota_venda(id_nota_venda),
+    id_lampada INT REFERENCES lampadas(id_lampada),
+    quantidade INT NOT NULL CHECK (quantidade > 0)
 );

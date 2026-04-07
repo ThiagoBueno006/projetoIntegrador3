@@ -13,10 +13,13 @@
         <div class="logo">
             <h1 class="nome">Vital <span class="nome_laranja">Lâmpadas</span></h1>
         </div>
-        <nav>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="menuPrincipal">☰</button>
+        <nav id="menuPrincipal">
             <ul class="nav_links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="analysis.html">Análises</a></li>
+                <li><a href="#" data-pagina="dashboard" onclick="navegar('dashboard'); return false;">Dashboard</a></li>
+                <li><a href="#" data-pagina="produtos" onclick="navegar('produtos'); return false;">Produtos</a></li>
+                <li><a href="#" data-pagina="movimentacoes" onclick="navegar('movimentacoes'); return false;">Movimentações</a></li>
+                <li><a href="#" data-pagina="analises" onclick="navegar('analises'); return false;">Análise</a></li>
             </ul>
         </nav>
         <div class="acessibilidade" aria-label="Ajustes de acessibilidade">
@@ -27,51 +30,325 @@
         </div>
     </header>
     <main class="container">
-        <section class="sec1 consulta">
-            <div class="pesquisa">
-                <h2 class="consulta_titulo">Consulta de Produto</h2>
-                <div class="consulta_pesquisa">
-                    <div class="consulta_pesquisa_barra">
-                        <form id="formPesquisa">
-                            <input id="produtoPesquisa" class="caixa_pesquisa" type="text" placeholder="Pesquisar produto..." />
-                            <button class="botao_pesquisa" type="submit">🔍</button>
+        <section id="dashboard" class="pagina ativa sec3 analise">
+            <div class="dashboard-layout">
+                <aside class="dashboard-col dashboard-left">
+                    <div class="card dashboard-consulta-card">
+                        <h2>Consulta de Produto</h2>
+                        <p class="dashboard-subtitulo">Busque produtos para ver o estoque atual</p>
+
+                        <label for="dashboardProdutoSelect">Selecione o Produto</label>
+                        <select id="dashboardProdutoSelect" class="dashboard-select">
+                            <option value="">Escolha um produto...</option>
+                        </select>
+                    </div>
+
+                    <div class="card dashboard-produto-card">
+                        <h2>Informações do Produto</h2>
+                        <div id="dashboardProdutoInfo" class="produto-detalhes">
+                            <p>Selecione um produto para visualizar os dados.</p>
+                        </div>
+                        <button type="button" class="dashboard-action-btn" onclick="navegar('movimentacoes')">Movimentar este produto</button>
+                    </div>
+                </aside>
+
+                <section class="dashboard-col dashboard-center">
+                    <div class="card dashboard-movimentacao-card">
+                        <h2>Movimentação de Estoque</h2>
+                        <p class="dashboard-subtitulo">Registre entradas e saídas de mercadorias</p>
+
+                        <div class="movimentacao-tabs">
+                            <button id="tipoEntradaBtn" type="button" class="movimentacao-tab ativo">Entrada</button>
+                            <button id="tipoSaidaBtn" type="button" class="movimentacao-tab">Saída</button>
+                        </div>
+
+                        <form id="dashboardMovimentoForm" class="dashboard-form">
+                            <div class="dashboard-form-grid">
+                                <div class="dashboard-form-group">
+                                    <label for="notaNumero">Nota Nº</label>
+                                    <input id="notaNumero" type="text" placeholder="Ex: 12345" />
+                                </div>
+
+                                <div class="dashboard-form-group">
+                                    <label for="notaData">Data</label>
+                                    <input id="notaData" type="date" />
+                                </div>
+                            </div>
+
+                            <div class="dashboard-form-group">
+                                <label for="dashboardMovimentoProduto">Lâmpada (Produto)</label>
+                                <select id="dashboardMovimentoProduto" class="dashboard-select">
+                                    <option value="">Selecione a lâmpada...</option>
+                                </select>
+                            </div>
+
+                            <div class="dashboard-form-group">
+                                <label for="dashboardQuantidade">Quantidade</label>
+                                <input id="dashboardQuantidade" type="number" min="1" value="1" />
+                            </div>
+
+                            <div class="dashboard-form-group">
+                                <label for="dashboardObservacao">Observações (Opcional)</label>
+                                <textarea id="dashboardObservacao" rows="3" placeholder="Detalhes adicionais..."></textarea>
+                            </div>
+
+                            <button id="dashboardMovimentoSubmit" type="submit" class="dashboard-submit-btn">Registrar Entrada</button>
+                            <div id="dashboardMensagem" class="movimentacao_mensagem"></div>
                         </form>
                     </div>
-                </div> 
-                <!-- <div class="autocomplete">
-                    <input 
-                    type="text" 
-                    id="inputProduto" 
-                    placeholder="Pesquisar produto..." 
-                    autocomplete="off"
-                    />
-                    <div id="listaSugestoes" class="sugestoes"></div>
-                </div> -->
+                </section>
+
+                <aside class="dashboard-col dashboard-right">
+                    <div class="dashboard-mini-cards">
+                        <div class="mini-card mini-card--blue">
+                            <span class="mini-card__label">Total Produtos</span>
+                            <strong id="totalProdutos">0</strong>
+                        </div>
+
+                        <div class="mini-card mini-card--green">
+                            <span class="mini-card__label">Total em Estoque</span>
+                            <strong id="totalEstoque">0</strong>
+                        </div>
+
+                        <div class="mini-card mini-card--alert">
+                            <span class="mini-card__label">Alerta de Estoque Baixo</span>
+                            <strong id="estoqueBaixo">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="card dashboard-chart-card">
+                        <h3>Estoque por Tipo</h3>
+                        <canvas id="grafico"></canvas>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="produtos" class="pagina sec1 consulta">
+            <div class="produtos-toolbar">
+                <div>
+                    <h1>Produtos</h1>
+                    <p class="produtos-subtitulo">Gerencie o catálogo de lâmpadas e estoque base.</p>
+                </div>
+                <button id="novoProdutoBtn" type="button" class="produtos-primary-btn">＋ Novo Produto</button>
             </div>
 
-            <div class="consulta_resultado">
-                <h2 class="consulta_resultado_titulo">Informações do Produto</h2>
-                <div class="consulta_resultado_descricao">
-                    <p>Pesquise um produto para ver os detalhes.</p>
+            <div class="produtos-board">
+                <div class="produtos-busca">
+                    <input id="produtoPesquisa" class="produtos-search" placeholder="Buscar por nome, tipo ou fornecedor..." />
+                </div>
+
+                <div class="produtos-header-row">
+                    <span>Produto</span>
+                    <span>Especificações</span>
+                    <span>Fornecedor</span>
+                    <span>Estoque</span>
+                    <span>Status</span>
+                    <span>Ações</span>
+                </div>
+
+                <div id="produtosLista" class="produtos-lista">
+                    <p class="produtos-vazio">Carregando produtos...</p>
                 </div>
             </div>
         </section>
-    
-        <section class="sec2 movimento">
-            <h2 class="movimento__titulo">Movimentação de Estoque</h2>
-            <div class="movimento__estoque">
-                <div class="movimento__controle">
-                    <label for="movimentoQuantidade">Quantidade</label>
-                    <input id="movimentoQuantidade" type="number" min="1" value="1" />
+
+        <section id="movimentacoes" class="pagina sec2 movimento">
+            <div class="movimentacoes-topo">
+                <h1>Histórico de Movimentações</h1>
+                <p class="movimentacoes-subtitulo">Consulte o log completo de entradas e saídas.</p>
+            </div>
+
+            <div class="movimentacoes-board">
+                <div class="movimentacoes-filtros">
+                    <div class="movimentacoes-filtro">
+                        <label for="filtroTipoMovimentacao">Tipo de Movimentação</label>
+                        <select id="filtroTipoMovimentacao">
+                            <option value="todos">Todas</option>
+                            <option value="entrada">Entrada</option>
+                            <option value="saida">Saída</option>
+                        </select>
+                    </div>
+
+                    <div class="movimentacoes-filtro">
+                        <label for="filtroProdutoMovimentacao">Produto</label>
+                        <select id="filtroProdutoMovimentacao">
+                            <option value="todos">Todos os produtos</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="movimento__botoes">
-                    <button id="buttonEntrada" type="button"><p>Registrar Entrada</p></button>
-                    <button id="buttonSaida" type="button"><p>Registrar Saída</p></button>
-                </div>
-                <div id="mensagemMovimentacao" class="movimentacao_mensagem"></div>
+
+                <table id="tabelaMovimentacoes" class="movimentacoes-tabela">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Produto</th>
+                            <th>Tipo</th>
+                            <th>Quantidade</th>
+                            <th>Nota Fiscal</th>
+                            <th>Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </section>
+
+        <section id="analises" class="pagina sec3 analise-painel">
+            <div class="analise-topo">
+                <div>
+                    <h1>Análise de Estoque</h1>
+                    <p class="analise-subtitulo">Indicadores gerados a partir das movimentações e do histórico do banco de dados.</p>
+                </div>
+                <span class="analise-chip">Atualização em tempo real</span>
+            </div>
+
+            <div class="analise-kpis">
+                <article class="analise-stat-card analise-stat-card--entrada">
+                    <span class="analise-stat__icon">↘</span>
+                    <div>
+                        <span class="analise-stat__label">Total de Entradas (30d)</span>
+                        <strong id="analiseTotalEntradas">0</strong>
+                        <small>unidades recebidas</small>
+                    </div>
+                </article>
+
+                <article class="analise-stat-card analise-stat-card--saida">
+                    <span class="analise-stat__icon">↗</span>
+                    <div>
+                        <span class="analise-stat__label">Total de Saídas (30d)</span>
+                        <strong id="analiseTotalSaidas">0</strong>
+                        <small>unidades expedidas</small>
+                    </div>
+                </article>
+
+                <article class="analise-stat-card analise-stat-card--destaque">
+                    <span class="analise-stat__icon">★</span>
+                    <div>
+                        <span class="analise-stat__label">Produto Mais Movimentado</span>
+                        <strong id="analiseProdutoTop">Sem dados</strong>
+                        <small id="analiseProdutoTopMeta">Aguardando histórico suficiente</small>
+                    </div>
+                </article>
+
+                <article class="analise-stat-card analise-stat-card--alerta">
+                    <span class="analise-stat__icon">!</span>
+                    <div>
+                        <span class="analise-stat__label">Alertas de Reposição</span>
+                        <strong id="analiseReposicao">0</strong>
+                        <small id="analiseReposicaoMeta">produtos abaixo do mínimo</small>
+                    </div>
+                </article>
+            </div>
+
+            <div class="analise-grid">
+                <div class="card analise-chart-panel">
+                    <div class="analise-panel-head">
+                        <div>
+                            <h2>Tendência Mensal de Movimentações</h2>
+                            <p>Comparativo de entradas e saídas nos últimos 6 meses.</p>
+                        </div>
+                    </div>
+                    <canvas id="graficoTendenciaMensal"></canvas>
+                </div>
+
+                <div class="card analise-chart-panel analise-chart-panel--estoque">
+                    <div class="analise-panel-head">
+                        <div>
+                            <h2>Distribuição de Estoque por Tipo</h2>
+                            <p>Quantidade total de lâmpadas por categoria.</p>
+                        </div>
+                    </div>
+                    <canvas id="graficoDistribuicaoEstoque"></canvas>
+                </div>
+            </div>
+
+            <div class="card analise-historico-panel">
+                <div class="analise-panel-head">
+                    <div>
+                        <h2>Histórico Recente</h2>
+                        <p>Últimas movimentações registradas no banco de dados.</p>
+                    </div>
+                </div>
+
+                <div class="analise-historico-tabela">
+                    <table class="analise-historico-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Produto</th>
+                                <th>Tipo</th>
+                                <th>Quantidade</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analiseHistoricoBody">
+                            <tr>
+                                <td colspan="5" class="analise-historico-vazio">Carregando histórico...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <div id="produtoModal" class="produto-modal" aria-hidden="true">
+        <div class="produto-modal__box">
+            <div class="produto-modal__header">
+                <h2 id="produtoModalTitulo">Novo Produto</h2>
+                <button id="fecharProdutoModal" type="button" class="produto-modal__close">×</button>
+            </div>
+
+            <form id="produtoForm" class="produto-form">
+                <input id="produtoId" type="hidden" />
+
+                <div class="produto-form__grid">
+                    <div class="produto-form__group">
+                        <label for="produtoTipo">Tipo de Lâmpada</label>
+                        <input id="produtoTipo" type="text" required />
+                    </div>
+
+                    <div class="produto-form__group">
+                        <label for="produtoFornecedor">Fornecedor</label>
+                        <input id="produtoFornecedor" type="text" required />
+                    </div>
+                </div>
+
+                <div class="produto-form__grid">
+                    <div class="produto-form__group">
+                        <label for="produtoPotencia">Potência (W)</label>
+                        <input id="produtoPotencia" type="number" min="1" required />
+                    </div>
+
+                    <div class="produto-form__group">
+                        <label for="produtoTemperatura">Temperatura de Cor</label>
+                        <input id="produtoTemperatura" type="text" placeholder="Ex: 6500K" required />
+                    </div>
+                </div>
+
+                <div class="produto-form__grid">
+                    <div class="produto-form__group">
+                        <label for="produtoEstoqueAtual">Estoque Atual</label>
+                        <input id="produtoEstoqueAtual" type="number" min="0" required />
+                    </div>
+
+                    <div class="produto-form__group">
+                        <label for="produtoEstoqueMinimo">Estoque Mínimo</label>
+                        <input id="produtoEstoqueMinimo" type="number" min="0" required />
+                    </div>
+                </div>
+
+                <div class="produto-form__actions">
+                    <button id="cancelarProdutoModal" type="button" class="produto-btn produto-btn--ghost">Cancelar</button>
+                    <button type="submit" class="produto-btn produto-btn--primary">Salvar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
     <script src="a11y.js"></script>
 </body>

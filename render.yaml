@@ -5,3 +5,11 @@ services:
     buildCommand: npm install
     startCommand: npm start
     rootDir: .
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_SSL
+        value: "true"

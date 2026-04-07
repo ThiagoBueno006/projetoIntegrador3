@@ -1,0 +1,47 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+       "version": "0.2.0",
+    "configurations": [
+        {
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "name": "Launch Extension",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm",
+            "request": "launch",
+            "type": "extensionHost"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        
+        {
+            "name": "Executar app local",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/server.js",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**"],
+            "serverReadyAction": {
+                "pattern": "http://localhost:(\\d+)",
+                "uriFormat": "http://localhost:%s",
+                "action": "openExternally"
+            }
+        },
+        {
+            "name": "Abrir app já em execução",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
