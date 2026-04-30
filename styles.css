@@ -654,7 +654,7 @@ nav {
 }
 
 .movimentacoes-topo h1 {
-    color: var(--text-light-strong);
+    color: var(--text-primary);
     margin-bottom: 4px;
     font-size: var(--fs-xl);
     font-weight: var(--fw-semibold);
@@ -783,7 +783,7 @@ nav {
 }
 
 .produtos-toolbar h1 {
-    color: var(--text-light-strong);
+    color: var(--text-primary);
     margin-bottom: 4px;
     font-size: var(--fs-xl);
     font-weight: var(--fw-semibold);
@@ -1064,6 +1064,7 @@ nav {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
+    margin: 5px;
 }
 
 .analise-stat-card {
